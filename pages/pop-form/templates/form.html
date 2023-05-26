@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pop-up Form Example</title>
+    <!-- Add your CSS styles here -->
+</head>
+
+<body>
+    <button onclick="openForm()">Open Form</button>
+
+    <div id="myForm" style="display:none">
+        <form action="submit.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <input type="submit" value="Submit">
+            <button type="button" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Add your JavaScript code here -->
+</body>
+
+</html>

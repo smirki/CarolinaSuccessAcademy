@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .landing.satisfaction {
+      color: orange;
+    }
+
+    .landing.tutoring {
+      color: black;
+      font-size: 100px;
+    }
+
+    .home.benefits {
+      color: black;
+      font-size: 60px;
+    }
+
+    .landing.bank {
+      color: #ffcf3a;
+      font-weight: bold;
+      font-size: 60px;
+    }
+
+    .landing.info {
+      color: black;
+      font-size: 30px;
+    }
+
+    .image-rounded {
+      width: 10%;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+    }
+
+    li,
+    a {
+      margin: 0 10px;
+      transition: all;
+      text-decoration: none;
+      color: black;
+    }
+
+    li a:hover:not(.active) {
+      font-weight: bold;
+      transform: translateY(-5px);
+      text-decoration: none;
+      color: black;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+
+    .statistic-banner {
+      left: 0;
+      background-color: #0062ff;
+      width: 100%;
+      height: 150px;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      /* brings the banner lower then the last row element (is this the best way to go about this?) */
+      margin-top: 5%;
+      padding-left: 10%;
+    }
+
+    .section {
+      color: white;
+      font-weight: bold;
+      font-size: larger;
+      margin-top: 35px;
+    }
+
+    .section span {
+      color: #d1d2d2;
+    }
+
+    .dash {
+      border-left: 1px solid white;
+      height: 60%;
+      justify-self: center;
+    }
+
+    a.button {
+      display: inline-block;
+
+      text-decoration: none;
+      font-size: 20px;
+
+      color: rgb(11, 130, 228);
+      background-color: #ffcf3a;
+      border: #ffcf3a;
+      border-radius: 200px;
+
+      padding: 0.3em 1.2em;
+      margin: 5px;
+
+      background-size: 200% 100%;
+      background-image: linear-gradient(to right, transparent 50%, #ffcf3a 50%);
+      transition: background-position 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0.1s,
+        color 0.5s ease 0s, background-color 0.5s ease;
+    }
+
+    a.button:hover {
+      color: rgba(255, 255, 255, 1);
+      background-color: #ffcf3a;
+      background-position: -100% 100%;
+    }
+
+    footer {
+      background-color: #0062ff;
+      margin-top: 35px;
+    }
+
+    .benefit-cards-container {
+      background-color: rgb(166, 172, 166);
+      height: 200px;
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, 0.1);
+      border: solid rgba(0, 0, 0, 0.15);
+      border-width: 1px 0;
+      box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+        inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+    }
+
+    .bi {
+      vertical-align: -0.125em;
+      fill: currentColor;
+    }
+
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #fff;
+      border-radius: 0.75rem;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .icon-link>.bi {
+      margin-top: 0.125rem;
+      margin-left: 0.125rem;
+      transition: transform 0.25s ease-in-out;
+      fill: currentColor;
+    }
+
+    .icon-link:hover>.bi {
+      transform: translate(0.25rem);
+    }
+
+    .icon-square {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      border-radius: 0.75rem;
+    }
+
+    .rounded-4 {
+      border-radius: 0.5rem;
+    }
+
+    .rounded-5 {
+      border-radius: 1rem;
+    }
+
+    .rounded.button.video {
+
+      background-color: rgb(11, 130, 228);
+      color: #ffcf3a;
+    }
+
+    .text-shadow-1 {
+      text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+    }
+
+    .text-shadow-2 {
+      text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+    }
+
+    .text-shadow-3 {
+      text-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+    }
+
+    .card-cover {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+
+
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .popup-inner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #aaa;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div id="myForm" class="popup">
+    <div class="popup-inner">
+      <span class="popup-close" onclick="closeForm()">&times;</span>
+      <form action="send_email.php" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" id="subject">
+
+        <label for="message">Message</label>
+        <input type="text" name="message" id="message">
+
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone">
+
+        <button>send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Start of Jumbotron -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="jumbotron mt-5">
+          <h1 class="display-4">Welcome to Carolina Success Academy!</h1>
+          <p class="lead">Learn and grow with our exceptional tutors from North Carolina colleges. Join us now to
+            improve
+            your skills and reach your academic goals.</p>
+          <hr class="my-4">
+          <p>Already have an account? Click the button below to login.</p>
+          <a class="btn btn-primary btn-lg" href="login.php" role="button">Login</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- End of Jumbotron -->
+  <!-- Start of Landing Section -->
+  <div class="container-fluid jumbotron mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="landing satisfaction">100% SATISFACTION GUARANTEE</div>
+        <div class="landing tutoring">Get Quality <strong>Tutoring.</strong></div>
+        <div class="landing bank">Without <strong>breaking the bank.</strong></div>
+        <div class="landing info">Private, 1-on-1, or group lessons from instructors who have real experience based on
+          your goals and interests.</div>
+        <a class="rounded button" onclick="openForm()">Get In Touch</a>
+        <a class="rounded button video">Watch a Video</a>
+      </div>
+      <div class="col-md-6">
+        <div class="row flex-wrap justify-content-center">
+          <div class="col-6 col-md-8 mb-4">
+            <div class="rounded overflow-hidden">
+              <img
+                src="https://thumbs.dreamstime.com/z/teacher-helps-high-school-student-technology-vertical-teacher-helps-high-school-student-technology-vertical-99966511.jpg"
+                class="img-rounded" alt="Image 1" style="height: 700px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Landing Section -->
+  <!-- Start of Statistics Section -->
+  <div class="container">
+    <div class="row">
+      <div class="container d-flex align-items-center justify-content-center statistic-banner">
+        <div class="col-md-2 section">8,200<span><br>Success Stories</span></div>
+        <span class="col-md-1 dash"></span>
+        <div class="col-md-2 section">10,204<span><br>Expert Instructors</span></div>
+        <span class="col-md-1 dash"></span>
+        <div class="col-md-2 section">50,923<span><br>Hours Tutored</span></div>
+        <span class="col-md-1 dash"></span>
+        <div class="col-md-3 section">
+          72,012<span><br>Active Students</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Statistics Section -->
+  <!-- Start of Why Choose Us Section -->
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="landing satisfaction text-center align-self-center">Why Choose Us</div>
+        <div class="text-center align-self-center"><strong>Benefits </strong>of Online Tutoring
+          <br>Services <strong>at
+            Carolina Success Academy
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Why Choose Us Section -->
+  <!-- Start of Custom Cards Section -->
+  <div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Meet Our Tutors</h2>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+          style="background-image: url('unsplash-photo-1.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Tutor 1</h2>
+            <p class="mb-4">Tutor 1's bio and areas of expertise.</p>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                  class="rounded-circle border border-white">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+                <small>North Carolina</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+                <small>100 Hours</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Add more tutor cards here -->
+    </div>
+  </div>
+
+  <!-- <form method="post" action="/public_html/controllers/send_email.php">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" id="subject">
+
+    <label for="message">Message</label>
+    <input type="text" name="message" id="message">
+
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" id="phone">
+
+    <button>send</button>
+  </form> -->
+
+  <script>
+    /* Open the pop-up form */
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    /* Close the pop-up form */
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
+  </script>
+</body>
+
+</html>

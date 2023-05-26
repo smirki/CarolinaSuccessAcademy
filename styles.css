@@ -1,0 +1,102 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #0d6efd;
+}
+
+a {
+  color: #0d6efd;
+}
+
+a:hover {
+  color: #0a58ca;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #0d6efd;
+}
+
+.navbar .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar .nav-link {
+  color: #ffffff;
+}
+
+.navbar .nav-link:hover {
+  color: #d4ecff;
+}
+
+/* Jumbotron */
+.jumbotron {
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+
+.jumbotron .lead {
+  color: #ffffff;
+}
+
+.jumbotron hr {
+  border-top: 1px solid #f8f9fa;
+}
+
+/* Landing section */
+.landing {
+  color: #0d6efd;
+}
+
+.landing.satisfaction {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.landing.tutoring,
+.landing.bank {
+  font-size: 1.5rem;
+}
+
+.rounded.button {
+  background-color: #0d6efd;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.rounded.button:hover {
+  background-color: #0a58ca;
+}
+
+/* Statistics section */
+.statistic-banner {
+  background-color: #ffc107;
+  color: #0d6efd;
+  padding: 20px 0;
+}
+
+.section {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.section span {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.dash {
+  border-left: 1px solid #0d6efd;
+  height: 50px;
+}
